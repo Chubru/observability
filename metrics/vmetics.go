@@ -46,27 +46,27 @@ func NewVMetrics(opts VMetricsParameters, baseLabels string) *VMetrics {
 	return &VMetrics{opts.buildMetricName(), baseLabels}
 }
 
-func (v *VMetrics) NewCounter(name string, label string) *vmetrics.Counter {
+func (v *VMetrics) NewCounter(name string, label string) *metrics.Counter {
 	return metrics.NewCounter(v.prefix + name + v.buildLabel(label))
 }
 
-func (v *VMetrics) GetOrCreateCounter(name string, label string) *vmetrics.Counter {
+func (v *VMetrics) GetOrCreateCounter(name string, label string) *metrics.Counter {
 	return metrics.GetOrCreateCounter(v.prefix + name + v.buildLabel(label))
 }
 
-func (v *VMetrics) NewGauge(name string, label string, f func() float64) *vmetrics.Gauge {
+func (v *VMetrics) NewGauge(name string, label string, f func() float64) *metrics.Gauge {
 	return metrics.NewGauge(v.prefix+name+v.buildLabel(label), f)
 }
 
-func (v *VMetrics) GetOrCreateGauge(name string, label string, f func() float64) *vmetrics.Gauge {
+func (v *VMetrics) GetOrCreateGauge(name string, label string, f func() float64) *metrics.Gauge {
 	return metrics.GetOrCreateGauge(v.prefix+name+v.buildLabel(label), f)
 }
 
-func (v *VMetrics) NewHistogram(name string, label string) *vmetrics.Histogram {
+func (v *VMetrics) NewHistogram(name string, label string) *metrics.Histogram {
 	return metrics.NewHistogram(v.prefix + name + v.buildLabel(label))
 }
 
-func (v *VMetrics) GetOrCreateHistogram(name string, label string) *vmetrics.Histogram {
+func (v *VMetrics) GetOrCreateHistogram(name string, label string) *metrics.Histogram {
 	return metrics.GetOrCreateHistogram(v.prefix + name + v.buildLabel(label))
 }
 
